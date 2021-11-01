@@ -36,7 +36,7 @@ function pokaz_Zamowienie(string $string)
     }
 }
 
-function dodaj_poza(){
+/*function dodaj_poza(){
     $d_root = $_SERVER['DOCUMENT_ROOT'];
     $names = ["nazwisko", "wiek", "panstwo", "mail", "zaplata", "jezyk[]"];
     $dane = "";
@@ -51,7 +51,7 @@ function dodaj_poza(){
     fclose($plik);
 
 }
-
+*/
 foreach ($_SERVER as $item){
     echo $item . "<br>";
 }
