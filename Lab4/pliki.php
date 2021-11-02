@@ -39,8 +39,8 @@ echo "</div></form>";
 
 include_once "funkcje.php";
 
-if (isset($_REQUEST["submit"])) { //jeśli kliknięto przycisk o name=submit
-    $akcja = $_REQUEST["submit"]; //odczytaj jego value
+if (filter_input(INPUT_POST,"submit")) { //jeśli kliknięto przycisk o name=submit
+    $akcja = filter_input(INPUT_POST,"submit"); //odczytaj jego value
     switch ($akcja) {
         case "Zapisz":dodaj();break;
         case "Pokaż":pokaz();break;
