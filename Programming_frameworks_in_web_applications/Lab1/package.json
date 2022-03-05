@@ -1,0 +1,23 @@
+{
+  "name": "Lab1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "skrypt_04b_API",
+  "scripts": {
+    "start": "node skrypt_04b_API",
+    "dev": "nodemon skrypt_04b_API"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "express-json": "^1.0.0",
+    "express-validator": "^6.14.0",
+    "uuid": "^8.3.2",
+    "uuidv4": "^6.2.12"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
