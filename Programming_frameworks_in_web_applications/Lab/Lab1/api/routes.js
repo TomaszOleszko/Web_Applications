@@ -1,14 +1,13 @@
 const express = require('express')
-const users = require('./users')
-const app = express()
 const router = express.Router()
-const PORT = process.env.PORT || 3000
-const uuid= require('uuid');
-const {metoda} = require("./middleware/metoda");
-app.use('/api/users', require('./api/routes'))
+const users = require('../users')
+const uuid = require("uuid");
+const middlewares = require("../middleware/metoda")
 
-router.get('/api/users', (req,res) => {
-    res.json(users)
+router.use('/metoda', middlewares.metoda)
+
+router.get('/api/users',(req,res) => {
+     res.json(users)
 })
 router.get('/api/users/:id', (req, res) => {
     const found = users.some(user => user.id === parseInt(req.params.id))
@@ -16,6 +15,7 @@ router.get('/api/users/:id', (req, res) => {
         res.json(users.filter(user => user.id === parseInt(req.params.id)))
     } else {
         res.status(400).json({msg: `Użytkownik o id ${req.params.id} nie istnieje`})}
+
 })
 router.use(express.json())
 router.post('/', (req, res) => {
@@ -27,12 +27,11 @@ router.post('/', (req, res) => {
         status: "aktywny"
     }
     if(!newUser.name || !newUser.email){
-        return res.status(400).json({msg: 'Wprowadź poprawne imię i nazwisko oraz email!'})
+        res.status(400).json({msg: 'Wprowadź poprawne imię i nazwisko oraz email!'})
     }
     users.push(newUser)
     res.json(users)
 })
-
 router.put('/api/users/:id', (req, res) => {
     const found = users.some(user => user.id ===
         parseInt(req.params.id))
@@ -49,7 +48,6 @@ router.put('/api/users/:id', (req, res) => {
         res.status(400).json({msg: `Użytkownik o id ${req.params.id} nie istnieje!`})
     }
 })
-
 router.delete('/api/users/:id', (req, res) => {
     const found = users.some(user => user.id === parseInt(req.params.id))
     if(found){
@@ -61,7 +59,4 @@ router.delete('/api/users/:id', (req, res) => {
     }
 })
 
-
-router.use('/metoda',metoda)
-
-app.listen(PORT, () => console.log(`Server działa na porcie: ${PORT}`))
+module.exports = router
