@@ -1,9 +1,9 @@
 import {useState} from 'react'
 
 function Formularz({dodajPrace}) {
-    const [opis, ustawOpis] = useState("")
-    const [nazwa, ustawNazwe] = useState("")
-    const [data, ustawDate] = useState("")
+    const [opis, ustawOpis] = useState("Brak")
+    const [nazwa, ustawNazwe] = useState("Brak")
+    const [data, ustawDate] = useState("2000-01-01")
     const [priorytet, ustawPriorytet] = useState("NIE")
     const handleSubmit = (e) => {
         e.preventDefault()

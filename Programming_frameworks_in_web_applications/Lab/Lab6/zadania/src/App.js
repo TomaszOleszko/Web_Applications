@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import KartaPrac from './components/KartaPrac'
 import Formularz from './components/Formularz'
+import './App.css'
 
 function App() {
     const [dziennikZadan, ustawDziennikZadan] = useState([])
@@ -9,7 +10,7 @@ function App() {
         ustawDziennikZadan(zadania)
     }
     return (
-        <section>
+        <section style={{padding:'15px',margin:'15px'}}>
             <Formularz dodajPrace={dodajZadanie}/>
             <KartaPrac dziennik={dziennikZadan}/>
         </section>
